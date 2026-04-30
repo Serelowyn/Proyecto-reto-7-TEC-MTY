@@ -29,3 +29,11 @@ print(mexico)
 
 """4.	Obtén un histograma del puntaje (score) para identificar el rango o clase más frecuente. Ubica el valor de México con una etiqueta de texto. """
 
+plt.figure(figsize=(8,5))
+n, bins, patches = plt.hist(happiness["Score"], color="C0", edgecolor="k")
+mex_score = float(mexico["Score"].iloc[0])
+plt.axvline(mex_score, color='red', linestyle=":", linewidth=2)
+plt.text(mex_score + 0.02, max(n) * 0.9, f'mexico: {mex_score}', color='red')
+plt.title("histograma de happiness score de 2019")
+plt.xlabel("score")
+plt.ylabel("frecuencia")
