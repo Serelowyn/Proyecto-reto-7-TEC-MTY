@@ -13,8 +13,14 @@ print(happiness.info())
 print(happiness.columns)
 print(happiness.dtypes)
 print(happiness.shape)
+print(happiness.head())
 
 print(metadata.info())
 print(metadata.columns)
 print(metadata.dtypes)
 print(metadata.shape)
+print(metadata.head())
+
+"""se agrega df de mexico unicamente con la informacion de mx"""
+mexico = happiness.loc[happiness["Country or region"] == "Mexico"].set_index("Country or region")
+print(mexico)
