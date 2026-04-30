@@ -1,6 +1,8 @@
 # ------------------- Importaciones
 
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # ------------------- Fin de las Importaciones
 
@@ -24,3 +26,6 @@ print(metadata.head())
 """se agrega df de mexico unicamente con la informacion de mx"""
 mexico = happiness.loc[happiness["Country or region"] == "Mexico"].set_index("Country or region")
 print(mexico)
+
+"""4.	Obtén un histograma del puntaje (score) para identificar el rango o clase más frecuente. Ubica el valor de México con una etiqueta de texto. """
+
