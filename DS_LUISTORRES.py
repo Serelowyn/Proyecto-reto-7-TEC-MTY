@@ -33,7 +33,21 @@ plt.figure(figsize=(8,5))
 n, bins, patches = plt.hist(happiness["Score"], color="C0", edgecolor="k")
 mex_score = float(mexico["Score"].iloc[0])
 plt.axvline(mex_score, color='red', linestyle=":", linewidth=2)
-plt.text(mex_score + 0.02, max(n) * 0.9, f'mexico: {mex_score}', color='red')
-plt.title("histograma de happiness score de 2019")
+plt.text(mex_score + 0.02, max(n) * 0.9, f"mexico: {mex_score}", color="red")
+plt.title("histograma happiness score de 2019")
 plt.xlabel("score")
 plt.ylabel("frecuencia")
+
+"""5.	Construye un boxplot para la columna esperanza de vida (Healthy life expectancy). Ubica el valor de México con una anotación."""
+
+plt.figure(figsize=(8,4))
+sns.boxplot(x=happiness["Healthy life expectancy"], color="C2")
+salud_mex = float(mexico["Healthy life expectancy"].iloc[0])
+
+#anotacion mex
+plt.scatter(salud_mex, 0, color="red", zorder=10)
+plt.annotate(f"mexico: {salud_mex}", xy=(salud_mex, 0), xytext=(salud_mex+0.05, 0.15), arrowprops=dict(arrowstyle="->", color="red"))
+plt.title("healthy life expectancy")
+plt.xlabel("años")
+plt.yticks([])
+plt.show()
