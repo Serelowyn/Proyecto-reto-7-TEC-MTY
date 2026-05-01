@@ -118,3 +118,13 @@ for i, f in enumerate(factors):
 plt.suptitle("score vs factores 2x3", fontsize=16)
 plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 plt.show()
+
+"""9.	Comprueba lo anterior con un heatmap donde incluyas los índices de correlación."""
+
+cols_corr = ["Score"] + factors
+corr = happiness[cols_corr].corr()
+plt.figure(figsize=(8,6))
+sns.heatmap(corr, annot=True, fmt=".2f", cmap="inferno", vmin=-1, vmax=1)
+plt.title("correlación: score - factores")
+plt.show()
+
