@@ -86,3 +86,21 @@ ax.axis("equal")
 plt.tight_layout()
 plt.show()
 
+"""7.	Filtra el dataframe para quedarte con 5 países (el más feliz, el menos feliz, México y dos más de tu interés) y visualiza en una misma gráfica los 6 factores."""
+
+#finland 1
+#south sudan 156
+#mexico
+#costa rica
+#brazil
+
+paises = ["Finland", "South Sudan", "Mexico", "Costa Rica", "Brazil"]
+graf = happiness[happiness["Country or region"].isin(paises)].set_index("Country or region")[factors]
+graf.plot(kind="bar", figsize=(12,6))
+plt.title("comparativa de factores de 5 paises")
+plt.ylabel("contribucion")
+plt.xticks(rotation=45)
+plt.legend(loc="upper right", bbox_to_anchor=(1.25, 1))
+plt.tight_layout()
+plt.show()
+
