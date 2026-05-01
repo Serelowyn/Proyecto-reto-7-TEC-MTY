@@ -51,3 +51,38 @@ plt.title("healthy life expectancy")
 plt.xlabel("años")
 plt.yticks([])
 plt.show()
+
+"""6.	Crea una gráfica circular para analizar en qué medida los factores contribuyen a evaluar la felicidad en México. Para ello, deberás modificar la estructura del dataframe mexico, obtenido anteriormente."""
+
+mexico.columns
+
+factors = [
+    "GDP per capita",
+    "Perceptions of corruption",
+    "Social support",
+    "Healthy life expectancy",
+    "Freedom to make life choices",
+    "Generosity",
+]
+
+mexico_circulo = happiness.loc[happiness["Country or region"] == "Mexico", factors].iloc[0]
+mexico_factors = mexico_circulo.rename(index={"GDP per capita":"GDP per capita",
+    "Social support":"Social support",
+    "Healthy life expectancy":"Healthy life expectancy",
+    "Freedom to make life choices":"Freedom",
+    "Generosity":"Generosity",
+    "Perceptions of corruption":"Corruption"
+})
+
+values = mexico_factors.values
+total = values.sum()
+percentages = values / total * 100
+
+#grafico
+fig, ax = plt.subplots(figsize=(12,7))
+ax.pie(percentages, labels=mexico_factors.index, autopct="%1.1f%%", startangle=90, colors=sns.color_palette("Set2"))
+ax.set_title("contribucion relativa de factores en mexico", fontsize=14, loc="left")
+ax.axis("equal")
+plt.tight_layout()
+plt.show()
+
