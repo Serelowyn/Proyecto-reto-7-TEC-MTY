@@ -104,3 +104,17 @@ plt.legend(loc="upper right", bbox_to_anchor=(1.25, 1))
 plt.tight_layout()
 plt.show()
 
+"""8.	Crea una matriz de subgráficas de 2 x 3 con scatter plots del puntaje (score) versus los 6 factores, para determinar qué factor influye más en la evaluación."""
+
+fig, axes = plt.subplots(2, 3, figsize=(12,6))
+axes = axes.flatten()
+
+for i, f in enumerate(factors):
+    sns.scatterplot(ax=axes[i], data=happiness, x=f, y="Score", color=f"C{i}")
+    axes[i].set_title(f"Score vs {f}")
+    axes[i].set_xlabel(f)
+    axes[i].set_ylabel("Score")
+
+plt.suptitle("score vs factores 2x3", fontsize=16)
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+plt.show()
