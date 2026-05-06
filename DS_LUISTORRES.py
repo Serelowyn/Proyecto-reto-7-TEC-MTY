@@ -128,3 +128,16 @@ sns.heatmap(corr, annot=True, fmt=".2f", cmap="inferno", vmin=-1, vmax=1)
 plt.title("correlación: score - factores")
 plt.show()
 
+"""10. Combina con el dataframe metada (Metadata.csv) para graficar la felicidad promedio por región."""
+
+meta_map = metadata.set_index("TableName")["Region"].to_dict()
+happiness["Region"] = happiness["Country or region"].map(meta_map)
+
+promedio_region = happiness.dropna(subset=["Region"]).groupby("Region")["Score"].mean().sort_values(ascending=False)
+plt.figure(figsize=(8,5))
+promedio_region.plot(kind="bar", color="C3")
+plt.title("felicidad promedio por region")
+plt.ylabel("score promedio")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
